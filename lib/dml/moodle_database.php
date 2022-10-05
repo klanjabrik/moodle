@@ -2865,4 +2865,13 @@ abstract class moodle_database {
         // No support unless specified.
         return false;
     }
+    
+    /**
+     * Check the database to see if it implements International Components for Unicode (ICU).
+     *
+     * @return bool True if on otherwise false.
+     */
+    public function is_icu_supported() {
+        return false;
+    }
 }
