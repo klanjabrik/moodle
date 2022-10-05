@@ -2115,4 +2115,14 @@ class mysqli_native_moodle_database extends moodle_database {
         // words, e.g. groups.
         return $this->get_manager()->generator->getEncQuoted($prefixedtablename);
     }
+    
+    /**
+     * Check the database to see if it implements International Components for Unicode (ICU).
+     *
+     * @return bool True if on otherwise false.
+     */
+    public function is_icu_supported() {
+        return ($this->get_dbtype() == 'mysqli' || $this->get_dbtype() == 'auroramysql') &&
+                version_compare($this->get_server_info()['version'], '8.0.0', '>=');
+    }
 }
